@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebApp.Entities\WebApp.Entities.csproj" />
+    <ProjectReference Include="..\WebApp.Persistence\WebApp.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

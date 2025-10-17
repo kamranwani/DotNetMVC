@@ -1,0 +1,22 @@
+﻿@model List<WebApp.Entities.Employees.Employess>
+
+<div class="d-flex flex-column">
+@{
+        <div class="d-flex gap-5">
+            <p>ID</p>
+            <p>Name</p>
+            <p>Salary</p>
+
+        </div>
+
+    foreach(var item in Model)
+    {
+        
+        <div class="d-flex gap-5">
+                <p>@item.Id</p>
+                <p>@item.Name</p>
+                <p>@item.Salary</p>
+        </div>
+    }
+}
+</div>

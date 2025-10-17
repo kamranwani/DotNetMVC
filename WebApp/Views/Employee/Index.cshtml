@@ -1,0 +1,13 @@
+﻿<div>
+    Welcome to the world of Dot Net
+</div>
+<ul>
+    @{
+        foreach (var employee in ViewBag.EmployeeList)
+        {
+            <li>@employee.Name</li>
+            <li>@employee.EmployeeId</li>
+            <li>@employee.Password</li>
+        }
+    }
+</ul>
