@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Application.Abstraction;
+using WebApp.Application.RRModels.Employee;
 using WebApp.Application.Services;
 using WebApp.Entities.Employees;
 using WebApp.Models;
@@ -45,13 +46,28 @@ public class EmployeeController : Controller
     public ViewResult Employees()
     {
         IEmployeeService EmpService = new EmployeeService();
+        try
+        {
+            EmployeeRequest newemp = new() { Name = "TempName" };
 
-        Employess newemp = new() { Id = 4, Name = "TempName", Salary = 90000 };
+            EmpService.AddEmployee(newemp);
 
-        EmpService.AddEmployee(newemp);
+            var employeeList = EmpService.GetAllEmployee();
 
-        var employeeList = EmpService.GetAllEmployee();
+            return View(employeeList);
+        }
+        catch{
+            return View("Something went Wrong");
+        }
 
-        return View(employeeList);
+        
+    }
+    public ViewResult EmployeeDetails()
+    {
+
+
+        return View();
     }
 }
+
+

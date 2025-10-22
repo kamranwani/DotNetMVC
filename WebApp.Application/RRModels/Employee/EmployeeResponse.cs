@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApp.Entities.Employees
+namespace WebApp.Application.RRModels.Employee
 {
-    public class Employess
+    public class EmployeeResponse
     {
-        public Guid Id { get; set; } = Guid.CreateVersion7();
-
         public string Name { get; set; }
+        public int AnnualSalary { get; set; }   
 
-        public int Salary {  get; set; }
+        public Guid EmployeeId { get; set; }
     }
 }

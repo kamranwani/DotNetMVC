@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Entities", "WebApp.Entities\WebApp.Entities.csproj", "{537142FF-48D1-483A-8274-712D2185AF5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Domain", "WebApp.Entities\WebApp.Domain.csproj", "{537142FF-48D1-483A-8274-712D2185AF5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Persistence", "WebApp.Persistence\WebApp.Persistence.csproj", "{8B7818E3-BFF8-45B7-96BD-D6D01633D568}"
 EndProject

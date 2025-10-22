@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebApp.Application\WebApp.Application.csproj" />
-    <ProjectReference Include="..\WebApp.Entities\WebApp.Entities.csproj" />
+    <ProjectReference Include="..\WebApp.Entities\WebApp.Domain.csproj" />
     <ProjectReference Include="..\WebApp.Persistence\WebApp.Persistence.csproj" />
   </ItemGroup>
 

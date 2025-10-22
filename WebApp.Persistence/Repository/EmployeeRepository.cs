@@ -14,9 +14,9 @@ public class EmployeeRepository : IEmployeeRepository
 
     public EmployeeRepository()
     {
-        Employess employees1 = new() { Id = 1, Name = "Kamran", Salary = 30000 };
-        Employess employees2 = new() { Id = 2, Name = "Logic Hub", Salary = 40000 };
-        Employess employees3 = new() { Id = 3, Name = "Kamran Wani", Salary = 60000 };
+        Employess employees1 = new() { Name = "Kamran", Salary = 30000 };
+        Employess employees2 = new() { Name = "Logic Hub", Salary = 40000 };
+        Employess employees3 = new() { Name = "Kamran Wani", Salary = 60000 };
 
         EmployeeList.Add(employees1);
         EmployeeList.Add(employees2);

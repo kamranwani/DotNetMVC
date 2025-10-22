@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApp.Application.RRModels.User;
 
-namespace WebApp.Entities.Employees
+namespace WebApp.Application.RRModels.Employee
 {
-    public class Employess
+    public class EmployeeRequest
     {
-        public Guid Id { get; set; } = Guid.CreateVersion7();
-
         public string Name { get; set; }
-
-        public int Salary {  get; set; }
     }
 }
