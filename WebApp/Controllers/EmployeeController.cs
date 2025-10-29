@@ -7,8 +7,16 @@ using WebApp.Models;
 
 namespace WebApp.Controllers;
 
+[Route("emps")]
 public class EmployeeController : Controller
 {
+   readonly IEmployeeService EmpService;
+    public EmployeeController(IEmployeeService EmpService)
+    {
+        this.EmpService = EmpService;
+    }
+
+    [Route("")]
     public ViewResult Index()
     {
         Employee employee1 = new()
@@ -43,9 +51,10 @@ public class EmployeeController : Controller
         return View();
     }
 
+    [Route("employee-list")]
     public ViewResult Employees()
     {
-        IEmployeeService EmpService = new EmployeeService();
+        
         try
         {
             EmployeeRequest newemp = new() { Name = "TempName" };
@@ -56,18 +65,13 @@ public class EmployeeController : Controller
 
             return View(employeeList);
         }
-        catch{
-            return View("Something went Wrong");
+        catch (Exception ex)
+        {
+            ViewBag.Error = "Something went wrong: " + ex.Message;
+            return View("Error");
         }
-
-        
     }
-    public ViewResult EmployeeDetails()
-    {
 
-
-        return View();
-    }
 }
 
 

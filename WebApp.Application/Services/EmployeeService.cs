@@ -16,11 +16,11 @@ public class EmployeeService : IEmployeeService
 {
     List<EmployeeResponse> employeeResponse = new();
 
-    private readonly IEmployeeRepository employeeRepository;
+     readonly IEmployeeRepository employeeRepository;
 
-    public EmployeeService()
+    public EmployeeService(IEmployeeRepository employeeRepository)
     {
-        employeeRepository = new EmployeeRepository();
+        this.employeeRepository = employeeRepository;
 
     }
     

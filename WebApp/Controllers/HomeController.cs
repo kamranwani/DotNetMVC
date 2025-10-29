@@ -15,6 +15,13 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+            Person person = new Person();
+
+            ViewBag.HomeData = person.ShowHomeData();
+            ViewBag.FoodData=person.ShowFoodData();
+            ViewBag.ClothesData=person.ShowClothesData();
+            ViewBag.MoneyData=person.ShowMoneyData();
+
             return View();
         }
 
