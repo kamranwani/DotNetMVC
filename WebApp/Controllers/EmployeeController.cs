@@ -72,6 +72,19 @@ public class EmployeeController : Controller
         }
     }
 
+    [HttpGet ("create")]
+    public ViewResult CreateEmployee() { 
+    return View();
+    }
+
+    [HttpPost("create")]
+    public ViewResult CreateEmployeePost([FromForm] EmployeeRequest model)
+    {
+        EmpService.AddEmployee(model);
+        var employees=EmpService.GetAllEmployee();
+        return View(employees);
+    }
+
 }
 
 
