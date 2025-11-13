@@ -8,10 +8,14 @@ namespace WebApp.Entities.Employees
 {
     public class Employess
     {
-        public Guid Id { get; set; } = Guid.CreateVersion7();
+        public int EmpID { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string Department { get; set; }
+        public decimal Salary { get; set; }
+        public DateTime JoiningDate { get; set; }
+        public double PhoneNumber { get; set; }
 
-        public string Name { get; set; }
 
-        public int Salary {  get; set; }
     }
 }

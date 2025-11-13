@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WebApp.Entities.Employees;
@@ -10,30 +12,37 @@ namespace WebApp.Persistence.Repository;
 
 public class EmployeeRepository : IEmployeeRepository
 {
-    private readonly List<Employess> EmployeeList=new List<Employess>();
+    private string ConnectionDB = "Server=.\\SQLEXPRESS;Database=CompanyDB;Trusted_Connection=True;TrustServerCertificate=True;";
+
 
     public EmployeeRepository()
     {
-        Employess employees1 = new() { Name = "Kamran", Salary = 30000 };
-        Employess employees2 = new() { Name = "Logic Hub", Salary = 40000 };
-        Employess employees3 = new() { Name = "Kamran Wani", Salary = 60000 };
-
-        EmployeeList.Add(employees1);
-        EmployeeList.Add(employees2);
-        EmployeeList.Add(employees3);
     }
     public bool AddEmployee(Employess emp)
-    {
-       
-
-        EmployeeList.Add(emp);
+    { 
 
         return true;
 
     }
 
-    public List<Employess> GetAllEmployee()
+    public async Task<IEnumerable<Employess>> GetAllEmployee()
     {
-        return EmployeeList;
+        using SqlConnection con = new SqlConnection(ConnectionDB);
+        //con.Open();
+        SqlCommand cmd = new SqlCommand("Select * from Employees");
+        SqlDataReader rdr=await cmd.ExecuteReaderAsync();
+        List < Employess > employees= new List<Employess>();
+        Employess emp;
+        while (await rdr.ReadAsync()) {
+            emp = new Employess();
+            emp.EmpID = Convert.ToInt32(rdr[0]);
+            emp.FullName= Convert.ToString(rdr[1]);
+            emp.Email = Convert.ToString(rdr[2]);
+            emp.Department = Convert.ToString(rdr[3]);
+            emp.Salary = Convert.ToDecimal(rdr[4]);
+
+            employees.Add(emp);
+        }
+        return employees;
     }
 }

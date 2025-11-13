@@ -14,7 +14,7 @@ namespace WebApp.Application.Services;
 public class EmployeeService : IEmployeeService
 
 {
-    List<EmployeeResponse> employeeResponse = new();
+    
 
      readonly IEmployeeRepository employeeRepository;
 
@@ -28,15 +28,16 @@ public class EmployeeService : IEmployeeService
     public bool AddEmployee(EmployeeRequest emp)
     {
         Employess newEmp = new();
-        newEmp.Name=emp.Name;
+        newEmp.FullName=emp.Name;
         newEmp.Salary = 20000;
         employeeRepository.AddEmployee(newEmp);
         return true;
     }
 
-    public IEnumerable<EmployeeResponse> GetAllEmployee()
+    public async Task<IEnumerable<EmployeeResponse>> GetAllEmployee()
     {   
-        var employeelist=employeeRepository.GetAllEmployee();
+        var employeelist= await employeeRepository.GetAllEmployee();
+        List<EmployeeResponse> employeeResponse = new();
 
         foreach (var emp in employeelist)
         {
@@ -44,9 +45,9 @@ public class EmployeeService : IEmployeeService
 
             empResponse.AnnualSalary = emp.Salary*12;
 
-            empResponse.Name=$"EMP-{emp.Name}";
+            empResponse.Name=$"EMP-{emp.FullName}";
 
-            empResponse.EmployeeId = emp.Id;
+            empResponse.EmployeeId = emp.EmpID;
 
             employeeResponse.Add(empResponse);
         }

@@ -11,5 +11,6 @@ namespace WebApp.Persistence.Interface;
 {
     bool AddEmployee(Employess emp);
 
-    List<Employess> GetAllEmployee();
+    Task<IEnumerable<Employess>> GetAllEmployee();
+
 }

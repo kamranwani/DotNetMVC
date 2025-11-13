@@ -52,24 +52,25 @@ public class EmployeeController : Controller
     }
 
     [Route("employee-list")]
-    public ViewResult Employees()
+    public async Task<ViewResult> Employees()
     {
         
-        try
-        {
-            EmployeeRequest newemp = new() { Name = "TempName" };
+        //try
+        //{
+            //EmployeeRequest newemp = new() { Name = "TempName" };
 
-            EmpService.AddEmployee(newemp);
+            //EmpService.AddEmployee(newemp);
+            Console.WriteLine("i am triggered");
 
-            var employeeList = EmpService.GetAllEmployee();
+            var employeeList = await EmpService.GetAllEmployee();
 
             return View(employeeList);
-        }
-        catch (Exception ex)
-        {
-            ViewBag.Error = "Something went wrong: " + ex.Message;
-            return View("Error");
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    ViewBag.Error = "Something went wrong: " + ex.Message;
+        //    return View("Error");
+        //}
     }
 
     [HttpGet ("create")]
@@ -78,11 +79,11 @@ public class EmployeeController : Controller
     }
 
     [HttpPost("create")]
-    public ViewResult CreateEmployeePost([FromForm] EmployeeRequest model)
+    public async Task<IActionResult> CreateEmployeePost([FromForm] EmployeeRequest model)
     {
         EmpService.AddEmployee(model);
-        var employees=EmpService.GetAllEmployee();
-        return View(employees);
+        var employees=await EmpService.GetAllEmployee();
+        return RedirectToAction("Employees");
     }
 
 }

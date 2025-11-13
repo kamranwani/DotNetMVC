@@ -9,8 +9,8 @@ namespace WebApp.Application.RRModels.Employee
     public class EmployeeResponse
     {
         public string Name { get; set; }
-        public int AnnualSalary { get; set; }   
+        public decimal AnnualSalary { get; set; }   
 
-        public Guid EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

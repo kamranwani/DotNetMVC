@@ -12,5 +12,6 @@ public interface IEmployeeService
 {
     bool AddEmployee(EmployeeRequest emp);
 
-    IEnumerable<EmployeeResponse> GetAllEmployee();
+    Task<IEnumerable<EmployeeResponse>> GetAllEmployee();
+
 }
